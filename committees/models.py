@@ -59,8 +59,8 @@ class Speaker(models.Model):
     affiliation = models.CharField(max_length=255, blank=True)
     role = models.CharField(max_length=100, blank=True)  # e.g., "Keynote Speaker"
     bio_data = models.FileField(blank=True, null=True)
-    image_path = models.ImageField(max_length=500, blank=True)
-    link = models.URLField(blank=True)  # e.g., personal website, LinkedIn, etc.
+    image_path = models.ImageField(upload_to = 'speakers/')
+    profile_link = models.URLField(blank=True)  # e.g., personal website, LinkedIn, etc.
     order  = models.PositiveIntegerField(default=99)
     added_on = models.DateTimeField(auto_now = True)
     added_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)

@@ -15,6 +15,6 @@ class CommitteeMemberViewSet(ModelViewSet):
 class SpeakerViewSet(ModelViewSet):
     queryset = Speaker.objects.all().order_by("order")
     serializer_class = SpeakerSerialzer
-    permission_class = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name']

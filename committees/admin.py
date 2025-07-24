@@ -23,7 +23,7 @@ class SpeakerAdmin(admin.ModelAdmin):
     ordering = ['order']
     search_fields = ['name', 'role']
     def get_queryset(self, request):
-        return CommitteeMember.objects.all_objects()
+        return Speaker.objects.all_objects()
 
 admin.site.register(Committee)
 admin.site.register(CommitteeMember, CommitteeMemberAdmin)

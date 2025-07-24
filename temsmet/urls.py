@@ -22,7 +22,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('secret-admin-57gk42/', admin.site.urls),
+    path('IcljJCfPDpyDI9R/', admin.site.urls),
     path('api/', include("committees.urls"))
 ]
 
