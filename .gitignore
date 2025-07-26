@@ -26,5 +26,6 @@ Thumbs.db
 .tox/
 .eggs/
 .env
+.local_env
 temsmet/media
 media

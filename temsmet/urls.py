@@ -23,7 +23,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('IcljJCfPDpyDI9R/', admin.site.urls),
-    path('api/', include("committees.urls"))
+    path('api/', include("committees.urls")),
+    path('api/sponsor/', include("sponsorship.urls"))
 ]
 
 urlpatterns += [

@@ -12,7 +12,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 
-LOGGING = {
+LOGGING1 = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
@@ -44,7 +44,7 @@ DEBUG = os.environ.get("DEBUG-V2", False) in ("True", "1", "yes")
 SECRET_KEY = os.environ.get("SECRET_KEY") if not DEBUG else 'django-insecure-+!j(eyv!h*8-#kp#2z1#l=i@hot5imt=36_q)zob88q6@$2g7%'
 
 # Allowed Hosts
-ALLOWED_HOSTS = ['*'] if not DEBUG else ['temsmet2025.org', 'www.temsmet2025.org']
+ALLOWED_HOSTS = ['*'] if DEBUG else ['temsmet2025.org', 'www.temsmet2025.org']
 
 # Installed Applications
 INSTALLED_APPS = [
@@ -63,6 +63,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'committees',
+    'sponsorship',
 ]
 
 # REST Framework settings
@@ -124,6 +125,18 @@ DATABASES = {
         },
     }
 }
+
+if DEBUG:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "OPTIONS": {
+                "database": "temsmet",
+                "user": "root",
+                "password": "",
+            },
+        }
+    }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
