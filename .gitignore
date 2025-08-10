@@ -57,3 +57,4 @@ local_settings.py
 # Backup files
 *~
 *.bak
+.env
