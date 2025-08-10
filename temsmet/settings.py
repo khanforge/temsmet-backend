@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     # Local apps
     'committees',
     'sponsorship',
+    'common'
 ]
 
 # REST Framework settings

@@ -20,11 +20,19 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
+from dotenv import load_dotenv
+from django.conf import settings
+import os
+
+load_dotenv(settings.BASE_DIR/'.env')
+
+admin_path = os.environ.get("ADMIN_PATH")
 
 urlpatterns = [
-    path('IcljJCfPDpyDI9R/', admin.site.urls),
+    path(admin_path, admin.site.urls),
     path('api/', include("committees.urls")),
-    path('api/sponsor/', include("sponsorship.urls"))
+    path('api/sponsor/', include("sponsorship.urls")),
+    path('api/latest_updates/', include("common.urls"))
 ]
 
 urlpatterns += [
