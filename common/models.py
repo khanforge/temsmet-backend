@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class LatestUpdates(models.Model):
     LIVE = 1
     INACTIVE = 0
@@ -11,10 +10,12 @@ class LatestUpdates(models.Model):
     IMPORTANT = "IMPORTANT"
     ANNOUNCEMENT = "ANNOUNCEMENT"
     NEWS = "NEWS"
+    KEYNOTE_SPEAKER = "KEYNOTE SPEAKER"
     PRIORITY_CHOICES = (
         (IMPORTANT, "IMPORTANT"),
         (ANNOUNCEMENT, "ANNOUNCEMENT"),
-        (NEWS, "NEWS")
+        (NEWS, "NEWS"),
+        (KEYNOTE_SPEAKER, "KEYNOTE SPEAKER"),
     )
     RED     = "red"
     GREEN   = "green"
