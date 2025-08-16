@@ -32,7 +32,7 @@ urlpatterns = [
     path(admin_path, admin.site.urls),
     path('api/', include("committees.urls")),
     path('api/sponsor/', include("sponsorship.urls")),
-    path('api/latest_updates/', include("common.urls"))
+    path('api/common/', include("common.urls"))
 ]
 
 urlpatterns += [

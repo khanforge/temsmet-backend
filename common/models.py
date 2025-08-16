@@ -59,3 +59,9 @@ class LatestUpdates(models.Model):
     def __str__(self):
         return f"{self.news} - {self.id}"
     
+class Page(models.Model):
+    name = models.CharField(max_length=100, unique=True)   # e.g. "call-for-papers"
+    enabled = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.name} - {'Enabled' if self.enabled else 'Disabled'}"
