@@ -60,8 +60,17 @@ class LatestUpdates(models.Model):
         return f"{self.news} - {self.id}"
     
 class Page(models.Model):
-    name = models.CharField(max_length=100, unique=True)   # e.g. "call-for-papers"
+    name = models.CharField(max_length=100, unique=True)   
     enabled = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.name} - {'Enabled' if self.enabled else 'Disabled'}"
+
+class ConferenceEvent(models.Model):
+    name = models.CharField(max_length=255)   
+    prev_date = models.DateField(null=True, blank=True)  
+    updated_date = models.DateField()  
+    is_firm_deadline = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
