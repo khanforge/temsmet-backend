@@ -26,10 +26,10 @@ import os
 
 load_dotenv(settings.BASE_DIR/'.env')
 
-admin_path = os.environ.get("ADMIN_PATH")
+admin_path = os.environ.get("ADMIN_PATH") + "/"
 
 urlpatterns = [
-    path(admin_path, admin.site.urls),
+    path("admin/", admin.site.urls),
     path('api/', include("committees.urls")),
     path('api/sponsor/', include("sponsorship.urls")),
     path('api/common/', include("common.urls"))
