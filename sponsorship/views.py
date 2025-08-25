@@ -10,7 +10,7 @@ class SponsorshipDetailsVeiwSet(ModelViewSet):
     serializer_class = SponsorSerializers
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['company_name'] 
+    filterset_fields = ['position'] 
 
     def get_queryset(self):
         queryset = SponsorDetail.objects.all()
@@ -20,5 +20,5 @@ class SponsorshipDetailsVeiwSet(ModelViewSet):
             queryset = queryset.filter(tier__sponsor_tier = tier_name)
         if position:
             queryset = queryset.filter(position = position)
-        queryset = queryset.order_by("order")
+        queryset = queryset.order_by("tier__tier_order", "order")
         return queryset
