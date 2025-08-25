@@ -122,7 +122,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": os.environ.get("DB_NAME"),
         "USER": os.environ.get("DB_USER"),
-        "PASSWORD": os.environ.get("PASSWORD"),
+        "PASSWORD": os.environ.get("PASSWORD", ""),
         "HOST": os.environ.get("host", "localhost"),
         "PORT": os.environ.get("port", "3306"),
         "OPTIONS": {
@@ -131,17 +131,17 @@ DATABASES = {
     }
 }
 
-if DEBUG:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "OPTIONS": {
-                "database": "temsmet",
-                "user": "root",
-                "password": "",
-            },
-        }
-    }
+# if DEBUG:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.mysql",
+#             "OPTIONS": {
+#                 "database": "temsmet",
+#                 "user": "root",
+#                 "password": "",
+#             },
+#         }
+#     }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -168,6 +168,33 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Auto field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+ADMINS = [
+    ("Parvej", "temsmet2025@nitdelhi.ac.in"),
+]
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"   # Or your institution's SMTP server if not Gmail
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get("EMAIL")
+EMAIL_HOST_PASSWORD = os.environ.get("APP_PASSWORD")
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "mail_admins": {
+            "level": "ERROR",
+            "class": "django.utils.log.AdminEmailHandler"
+        },
+    },
+    "root": {
+        "handlers": ["mail_admins"],
+        "level": "ERROR",
+    },
+}
+
 
 # Security settings (only take effect if DEBUG is False)
 # SECURE_BROWSER_XSS_FILTER = True
