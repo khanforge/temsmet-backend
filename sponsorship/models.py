@@ -8,7 +8,8 @@ class Tier(models.Model):
     stage_recognition = models.TextField(null=True, blank=True)
     promotional_coverage = models.TextField(null=True, blank=True)
     presentation_time = models.CharField(max_length=10, null=True, blank=True)
-
+    tier_order = models.IntegerField(default=0)
+    
     def __str__(self):
         return f"{self.sponsor_tier}"
 
