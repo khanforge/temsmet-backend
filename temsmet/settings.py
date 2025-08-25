@@ -157,7 +157,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 ADMINS = [
-    ("Parvej", "ServerErrors+temsmet2025@nitdelhi.ac.in"),
+    ("Parvej", "temsmet2025@nitdelhi.ac.in"),
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
