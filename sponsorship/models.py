@@ -26,6 +26,8 @@ class SponsorDetail(models.Model):
     logo = models.ImageField(upload_to='sponsors/logos/', null=True, blank=True)
     position = models.IntegerField(choices=POSITION_CHOICES, default = SIDEBAR)
     order = models.IntegerField(default = 99)
+    hieght = models.CharField(max_length=10, null=True, blank=True)
+    width = models.CharField(max_length=10, null=True, blank=True)
     
     def __str__(self):
         return f"{self.company_name}-{self.tier}-{self.id}"

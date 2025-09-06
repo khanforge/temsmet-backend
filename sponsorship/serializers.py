@@ -14,5 +14,7 @@ class SponsorSerializers(serializers.ModelSerializer):
             "tier_name",
             "tier_order",
             "position",
-            "order"
+            "order",
+            "hieght",
+            "width",
         ]
