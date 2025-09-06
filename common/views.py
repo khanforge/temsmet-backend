@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from common.models import LatestUpdates, Page, ConferenceEvent
+from common.models import LatestUpdates, Page, ConferenceEvent, Hotel
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.generics import ListAPIView
-from .serializers import LatestUpdatesSerializers, PageSerializer, ConferenceEventSerializer
+from .serializers import LatestUpdatesSerializers, PageSerializer, ConferenceEventSerializer, HotelSerializer
 from rest_framework import viewsets
 
 # Create your views here.
@@ -27,3 +27,10 @@ class ConferenceEventViewSet(ListAPIView):
 
     def get_queryset(self):
         return ConferenceEvent.objects.all().order_by("updated_date")
+
+class HotelViewSet(ListAPIView):
+    serializer_class = HotelSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        return Hotel.objects.all().order_by("order","name")

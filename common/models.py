@@ -74,3 +74,25 @@ class ConferenceEvent(models.Model):
 
     def __str__(self):
         return self.name
+
+class Hotel(models.Model):
+    name = models.CharField(max_length=255)
+    single_bed = models.CharField(max_length=100, blank=True, null=True)   
+    double_bed = models.CharField(max_length=100, blank=True, null=True)   
+    breakfast = models.BooleanField(default=False)      
+    max_rooms = models.IntegerField(blank=True, null=True)
+    phone = models.CharField(max_length=50, blank=True, null=True)
+    distance = models.CharField(max_length=50, blank=True, null=True)     
+    address = models.TextField(blank=True, null=True)
+    website = models.URLField(max_length=500, blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
+    suggestions = models.TextField(blank=True, null=True)
+    order = models.PositiveIntegerField(default=99)
+
+    class Meta:
+        verbose_name = "Hotel"
+        verbose_name_plural = "Hotels"
+        ordering = ["name"]
+
+    def __str__(self):
+        return f"{self.id} - {self.name}"
