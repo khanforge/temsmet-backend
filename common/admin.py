@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import LatestUpdates, Page, ConferenceEvent
+from .models import LatestUpdates, Page, ConferenceEvent, Hotel
 
 # Register your models here.
 class LatestUpdateAdmin(admin.ModelAdmin):
@@ -14,6 +14,11 @@ class ConfereceEventAdmin(admin.ModelAdmin):
     list_display = ["name", "prev_date", "updated_date", "is_firm_deadline"]
     list_editable = ["prev_date", "updated_date", "is_firm_deadline"]
 
+class HotelAdmin(admin.ModelAdmin):
+    list_display = ["name","breakfast", "order", "max_rooms", "phone", "distance", "address", "website" ]
+    list_editable = ["max_rooms", "breakfast", "order", "phone", "distance", "address", "website"]
+
 admin.site.register(LatestUpdates, LatestUpdateAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(ConferenceEvent, ConfereceEventAdmin)
+admin.site.register(Hotel, HotelAdmin)

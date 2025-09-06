@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from common.models import LatestUpdates, Page, ConferenceEvent
+from common.models import LatestUpdates, Page, ConferenceEvent, Hotel
 from datetime import date
 
 class LatestUpdatesSerializers(serializers.ModelSerializer):
@@ -26,3 +26,8 @@ class ConferenceEventSerializer(serializers.ModelSerializer):
         if upcoming_events.exists() and obj.id == upcoming_events.first().id:
             return "red"
         return "normal"
+    
+class HotelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Hotel
+        fields = "__all__"
