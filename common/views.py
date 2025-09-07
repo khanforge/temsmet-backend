@@ -4,6 +4,8 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.generics import ListAPIView
 from .serializers import LatestUpdatesSerializers, PageSerializer, ConferenceEventSerializer, HotelSerializer
 from rest_framework import viewsets
+from django.db.models import IntegerField
+from django.db.models.functions import Cast, Substr, Length
 
 # Create your views here.
 class LatestUpdateView(ListAPIView):
@@ -33,4 +35,12 @@ class HotelViewSet(ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        return Hotel.objects.all().order_by("order","name")
+        return (
+            Hotel.objects.annotate(
+                numeric_distance=Cast(
+                    Substr("distance", 1, Length("distance") - 3),
+                    IntegerField()
+                )
+            )
+            .order_by("numeric_distance", "order", "name")
+        )
