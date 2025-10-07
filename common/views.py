@@ -52,10 +52,10 @@ class QuickLinkViewSet(ListAPIView):
 
     def get_queryset(self):
         page = self.request.query_params.get("page").strip()
+        queryset = QuickLink.objects.filter(page__name=page, is_live=True).order_by("order", "button_text")
+        queryset |= QuickLink.objects.filter(page__name="all", is_live=True).order_by("order", "button_text")
         if page:
-            return (
-                QuickLink.objects.filter(page__name=page, is_live=True).order_by("order", "button_text")
-            )
+            return queryset
         else :
             return QuickLink.objects.none()
     
