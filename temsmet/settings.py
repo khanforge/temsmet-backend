@@ -130,19 +130,6 @@ DATABASES = {
         },
     }
 }
-
-# if DEBUG:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.mysql",
-#             "OPTIONS": {
-#                 "database": "temsmet",
-#                 "user": "root",
-#                 "password": "",
-#             },
-#         }
-#     }
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
