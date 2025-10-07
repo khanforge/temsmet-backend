@@ -51,8 +51,7 @@ class QuickLinkViewSet(ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        page = self.request.query_params.get("page")
-        print(page)
+        page = self.request.query_params.get("page").strip()
         if page:
             return (
                 QuickLink.objects.filter(page__name=page, is_live=True).order_by("order", "button_text")
