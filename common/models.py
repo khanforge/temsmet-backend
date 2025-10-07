@@ -126,9 +126,15 @@ class QuickLink(models.Model):
         (WHITE, "White"),
     )
 
+    target_choices = (
+        ("_self", "Same Tab"),
+        ("_blank", "New Tab"),
+    )
 
     button_text = models.CharField(max_length = 100)
     button_colors = models.CharField(choices=COLOR_CHOICES, max_length=20)
+    icon_svg = models.TextField(blank = True, null = True)
+    target = models.CharField(choices = target_choices, default = "_self", max_length=10)
     page = models.ForeignKey(Page, on_delete=models.CASCADE, related_name="Page_Name")
     link = models.URLField(max_length = 500, blank=True, null=True)
     order = models.PositiveIntegerField(default=99)

@@ -49,22 +49,14 @@ class HotelViewSet(ListAPIView):
 class QuickLinkViewSet(ListAPIView):
     serializer_class = QuickLinkSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['page'] 
 
     def get_queryset(self):
         page = self.request.query_params.get("page")
+        print(page)
         if page:
             return (
                 QuickLink.objects.filter(page__name=page, is_live=True).order_by("order", "button_text")
             )
-<<<<<<< HEAD
         else :
             return QuickLink.objects.none()
     
-=======
-        return (
-            QuickLink.objects.all().order_by("order", "button_text")
-        )
-    
->>>>>>> 84adaa3904e7fbd1bc0086ee843ce9b2abf00220
