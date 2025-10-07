@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from common.models import LatestUpdates, Page, ConferenceEvent, Hotel
+from common.models import LatestUpdates, Page, ConferenceEvent, Hotel, QuickLink
 from datetime import date
 
 class LatestUpdatesSerializers(serializers.ModelSerializer):
@@ -31,3 +31,9 @@ class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
         fields = "__all__"
+
+class QuickLinkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuickLink
+        fields = "__all__"
+    

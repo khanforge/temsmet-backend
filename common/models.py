@@ -96,3 +96,47 @@ class Hotel(models.Model):
 
     def __str__(self):
         return f"{self.id} - {self.name}"
+
+class QuickLink(models.Model):
+    RED     = "red"
+    GREEN   = "green"
+    BLUE    = "blue"
+    YELLOW  = "yellow"
+    ORANGE  = "orange"
+    PURPLE  = "purple"
+    PINK    = "pink"
+    TEAL    = "teal"
+    BROWN   = "brown"
+    GRAY    = "gray"
+    BLACK   = "black"
+    WHITE   = "white"
+
+    COLOR_CHOICES = (
+        (RED, "Red"),
+        (GREEN, "Green"),
+        (BLUE, "Blue"),
+        (YELLOW, "Yellow"),
+        (ORANGE, "Orange"),
+        (PURPLE, "Purple"),
+        (PINK, "Pink"),
+        (TEAL, "Teal"),
+        (BROWN, "Brown"),
+        (GRAY, "Gray"),
+        (BLACK, "Black"),
+        (WHITE, "White"),
+    )
+
+
+    button_text = models.CharField(max_length = 100)
+    button_colors = models.CharField(choices=COLOR_CHOICES, max_length=20)
+    page = models.ForeignKey(Page, on_delete=models.CASCADE, related_name="Page_Name")
+    link = models.URLField(max_length = 500, blank=True, null=True)
+    order = models.PositiveIntegerField(default=99)
+    is_live = models.BooleanField(default=True)
+    file = models.FileField(upload_to = "quick_links_pdfs/", blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+
+
+    def __str__(self):
+        return f"{self.button_text}-{self.id}"

@@ -26,7 +26,7 @@ import os
 
 load_dotenv(settings.BASE_DIR/'.env')
 
-admin_path = os.environ.get("ADMIN_PATH") + "/"
+admin_path = os.environ.get("ADMIN_PATH", "admin") + "/"
 
 urlpatterns = [
     path(admin_path, admin.site.urls),
