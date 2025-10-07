@@ -42,5 +42,5 @@ class HotelViewSet(ListAPIView):
                     IntegerField()
                 )
             )
-            .order_by("numeric_distance", "order", "name")
+            .order_by("order", "numeric_distance", "name")
         )
