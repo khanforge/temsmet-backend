@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import LatestUpdates, Page, ConferenceEvent, Hotel
+from .models import LatestUpdates, Page, ConferenceEvent, Hotel, QuickLink
 
 # Register your models here.
 class LatestUpdateAdmin(admin.ModelAdmin):
@@ -18,7 +18,12 @@ class HotelAdmin(admin.ModelAdmin):
     list_display = ["name","breakfast", "order", "max_rooms", "phone", "distance", "address", "website" ]
     list_editable = ["max_rooms", "breakfast", "order", "phone", "distance", "address", "website"]
 
+class QuickLinkAdmin(admin.ModelAdmin):
+    list_display = ['button_text','button_colors', 'page', 'link', 'order', 'is_live']
+    list_editable = ['button_colors', 'page', 'link', 'order', 'is_live']
+
 admin.site.register(LatestUpdates, LatestUpdateAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(ConferenceEvent, ConfereceEventAdmin)
 admin.site.register(Hotel, HotelAdmin)
+admin.site.register(QuickLink, QuickLinkAdmin)
