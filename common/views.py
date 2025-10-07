@@ -56,9 +56,8 @@ class QuickLinkViewSet(ListAPIView):
         page = self.request.query_params.get("page")
         if page:
             return (
-                QuickLink.objects.filter(page__name=page).order_by("order", "button_text")
+                QuickLink.objects.filter(page__name=page, is_live=True).order_by("order", "button_text")
             )
-        return (
-            QuickLink.objects.all().order_by("order", "button_text")
-        )
+        else :
+            return QuickLink.objects.none()
     
